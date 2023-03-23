@@ -6,7 +6,7 @@ import { HomePage } from "../pages/HomePage";
 
 export const Router: React.FC = () => {
     return (
-        <BrowserRouter>
+        <BrowserRouter basename={process.env.PUBLIC_URL}>
             <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/diary" element={<DiaryPage />} />

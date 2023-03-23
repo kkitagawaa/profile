@@ -14,6 +14,7 @@ export const HomePage = () => {
         <div className='home-container'>
             <Header />
             <Profile  name={profile.name} age={profile.age} introduction={profile.introduction} />
+            (このプロフィールは架空のものです。)
         </div>
     )
 }

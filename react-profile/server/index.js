@@ -1,8 +1,10 @@
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import App from '../src/App';
+import { DiaryPage } from '../src/pages/DiaryPage';
 import { Sample } from '../src/components/Sample'
 import { StaticRouter } from 'react-router-dom/server';
+import { Routes, Route } from 'react-router-dom';
 const express = require('express');
 const path = require('path');
 const app = express();
@@ -12,7 +14,7 @@ const app = express();
 app.use(express.static(path.join(__dirname, "public")));
 
 
-app.get('/', function (req, res) {
+app.get('*', function (req, res) {
   const ap = renderToString(
     <StaticRouter location={req.url}>
       <App />
@@ -24,11 +26,11 @@ app.get('/', function (req, res) {
   const html = `
         <html lang="en">
         <head>
+        <script src="bundle.js" async defer></script>
         </head>
         <body>
             <div id="root">${ap}</div>
         </body>
-        <script src="bundle.js" async defer></script>
         </html>
     `;
 
